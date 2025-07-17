@@ -19,6 +19,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", CONFIG.FRONTEND_URL);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 app.use(
   cors({
     origin: CONFIG.FRONTEND_URL,
@@ -27,7 +34,14 @@ app.use(
     credentials: true,
   })
 );
-app.options("*", cors());
+
+// ✅ Handle preflight OPTIONS request globally
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", CONFIG.FRONTEND_URL);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.sendStatus(200);
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
