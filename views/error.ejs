@@ -1,0 +1,45 @@
+<style>
+.error-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #757575;
+    margin-bottom: 20px;
+}
+
+pre {
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 4px;
+    overflow: auto;
+    text-align: left;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.9em;
+    color: #333;
+}
+
+a {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<div class="error-container">
+  <h1><%= message %></h1>
+  <h2><%= error.status %></h2>
+</div>

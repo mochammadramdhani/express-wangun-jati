@@ -1,0 +1,16 @@
+<header class="header">
+  <div>
+    <button id="toggleSidebar" class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+    <%= currentPage.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %>
+  </div>
+  <!-- <div>
+    <button class="icon-btn">
+      <i class="fas fa-bell"></i>
+      <span class="notification-dot"></span>
+    </button>
+    <button class="icon-btn">
+      <i class="fas fa-envelope"></i>
+      <span class="notification-dot"></span>
+    </button>
+  </div> -->
+</header>

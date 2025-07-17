@@ -1,0 +1,31 @@
+<div class="field-navbar">
+  <div class="back-modal"></div>
+  <div id="sidebar" class="sidebar">
+    <nav class="nav">
+      <h1 style="
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 150%;
+    margin: 0;
+    ">
+        Wangun Jati<br>Konstruksi</h1>
+      <a href="messages" class="nav-link <%= currentPage === 'messages' ? 'active' : '' %>">
+        <i class="fas fas fa-envelope"></i>Messages
+      </a>
+      <a href="settings" class="nav-link <%= currentPage === 'settings' ? 'active' : '' %>">
+        <i class="fas fa-cog"></i>Settings
+      </a>
+      <a href="logout" class="nav-link">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </nav>
+
+    <div class="profile">
+      <div class="avatar"><%= user.initials %></div>
+      <div class="profile-info">
+        <p><%= user.name %></p>
+        <p style="font-size: 12px; color: #9ca3af;"><%= user.role %></p>
+      </div>
+    </div>
+  </div>
+</div>

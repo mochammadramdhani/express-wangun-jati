@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/admin/auth.css">
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+  <title><%= title %> | Wangun Jati Konstruksi</title>
+</head>
+
+<body>
+
+  <form class="login-form" method="post">
+    <h2>Admin Login</h2>
+    <div>
+      <label for="username">Enter Username</label>
+      <input type="text" id="username" name="username" placeholder="misal: johndoe" required>
+    </div>
+
+    <div>
+      <label for="password">Enter Password</label>
+      <input type="password" id="password" name="password" placeholder="********" required>
+    </div>
+
+    <div>
+      <button type="submit" class="login-button">Sign In</button>
+    </div>
+
+    <div class="signup-text">
+      Don't have an account?
+      <a href="signup">Sign up</a>
+    </div>
+  </form>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!username || !password) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      fetch('/admin/auth', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username,
+            password
+          })
+        })
+        .then(async (response) => {
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Login gagal');
+          }
+
+          window.location.href = '/admin/messages';
+        })
+        .catch((err) => {
+          console.error(err);
+          alert(err.message || 'Terjadi kesalahan');
+        });
+    });
+  </script>
+
+</body>
+
+</html>
