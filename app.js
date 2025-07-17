@@ -21,11 +21,13 @@ const __dirname = dirname(__filename);
 const app = express();
 app.use(
   cors({
-    origin: CONFIG.FRONTEND_URL || "http://localhost:3000",
+    origin: CONFIG.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
+app.options("*", cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
